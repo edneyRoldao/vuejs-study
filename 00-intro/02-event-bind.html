@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS Study</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- VUEJS 2.6.14 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <h1>Event Bind Sample 1</h1>
+        <div>
+            <button v-on:click="increase">CLICK HERE</button>
+            <p> {{ counter }} </p>    
+        </div>
+
+        <h1>Event Bind Sample - passing parameter to a function</h1>
+        <div>
+            <button v-on:click="increase2(3)">CLICK HERE</button>
+            <p> {{ counter2 }} </p>    
+        </div>
+
+
+        <h1>Event Bind Sample - getting event as parameter explicity on HTML ($event is reverved for vue)</h1>
+        <div>
+            <button v-on:click="increase3(3, $event)">CLICK HERE</button>
+            <p> {{ counter3 }} </p>    
+        </div>
+
+        <h1>Event Bind Sample  - getting event as parameter implicity on HTML</h1>
+        <div>
+            <p style="height: 400px; width: 1000px;" v-on:mousemove="updateCoordintes">
+                Coordinates: {{ x }} / {{ y }} - <span v-on:mousemove="ignoreEvent">DEAD SPOT</span>
+            </p>
+        </div>
+
+
+        <h1>Event Bind Sample  - event modifyer </h1>
+        <div>
+            <p style="height: 400px; width: 1000px;" v-on:mousemove="updateCoordintes">
+                Coordinates: {{ x }} / {{ y }} - <span v-on:mousemove.stop>DEAD SPOT</span>
+            </p>
+        </div>
+
+    </div>
+
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            counter2: 0,
+            counter3: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            increase: function() {
+                this.counter++;
+            },
+            increase2: function(num) {
+                this.counter2 += num;
+            },
+            increase3: function(num, event) {
+                console.log(event);
+                this.counter3 += num;
+            },
+            updateCoordintes: function(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            ignoreEvent: function(event) {
+                event.stopPropagation();                
+            }
+        }
+    })
+</script>
+</html>
