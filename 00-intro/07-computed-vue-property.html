@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS Study</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- VUEJS 2.6.14 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <h1> Computed property Samples </h1>
+
+        <button v-on:click="count1++">INCREASE</button>
+        <button v-on:click="count1--">DECREASE</button>
+
+        <!-- computed property will not be called -->
+        <button v-on:click="count2++">INCREASE SECOND</button>
+        
+        <p> {{ resultMethod() }} </p>
+        <p> {{ resultComputed }} </p>
+        <p> {{ count1 }} | {{ count2 }} </p>
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count1: 0,
+            count2: 0
+        },
+        computed: {
+            resultComputed: function() {
+                console.log('vue computed property was called');
+                return this.count1 >= 5 ? 'greater then 4' : 'smaller then 5';
+            }
+        },
+        methods: {
+            resultMethod: function() {
+                console.log('vue method property was called');
+                return this.count1 >= 5 ? 'greater then 4' : 'smaller then 5';
+            }
+        }
+    })
+</script>
+</html>

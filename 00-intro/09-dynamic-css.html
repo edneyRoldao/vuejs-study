@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS Study</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+
+    <!-- VUEJS 2.6.14 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <h1>First Example</h1>
+        <div class="demo" 
+             @click="changeColor = !changeColor"
+             :class="{red: changeColor}"></div>
+
+        <h1>Second Example</h1>
+        <div class="demo" 
+             @click="changeColor2 = !changeColor2"
+             :class="divClasses"></div>
+
+        <h2>Third Example</h2>
+        <div class="demo" :class="color"></div>
+        <div>
+            <input type="text" v-model="color" placeholder="values: red, blue, green">
+        </div>
+        
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            changeColor: false,
+            changeColor2: false,
+            color: 'green'
+        },
+        computed: {
+            divClasses: function () {
+                return {
+                    red: this.changeColor2,
+                    blue: !this.changeColor2
+                }
+            }
+        }
+    })
+</script>
+</html>

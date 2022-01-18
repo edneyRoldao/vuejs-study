@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>VueJS Study</title>
@@ -13,13 +14,11 @@
     
     <div id="app">
 
-        <h1>Keyboard Event Example</h1>
-        <input type="text" v-on:keyup="popup">
-
-
-        <h1>Keyboard Event with key modifiers Example</h1>
-        <input type="text" v-on:keyup.enter.space="popup">
-
+        <h1> Reacting to changes Sample </h1>
+        <button v-on:click="count++">INCREASE</button>
+        <button v-on:click="count--">DECREASE</button>
+        <p>count: {{ count }}</p>
+        <p>Result: {{ result() }}</p>
     </div>
 
 </body>
@@ -27,10 +26,11 @@
     new Vue({
         el: '#app',
         data: {
+            count: 0
         },
         methods: {
-            popup: function() {
-                alert('opening by key event');
+            result: function() {
+                return this.count > 5 ? 'GT 5' ? 'ST 5';
             }
         }
     })

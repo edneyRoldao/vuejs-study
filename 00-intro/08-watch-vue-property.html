@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS Study</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- VUEJS 2.6.14 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+
+        <h1> Working with async proccesses on watch vue property </h1>
+        <h3>In this examle, everytime count prop changes, the function on watch will be called</h3>
+        <button v-on:click="count++">INCREASE</button>
+        <button v-on:click="count--">DECREASE</button>
+        <p>Counter: {{ count }} </p>
+        <p>Result: {{ output }} </p>
+
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count: 1
+        },
+        computed: {
+            output: function() {
+                return this.count > 5 ? 'greater then 5' : 'Smaller then 5';
+            }
+        },
+        watch: {
+            count: function() {
+                let closure = this;
+                setTimeout(() => closure.count = 0, 2000);
+            }
+        }
+    })
+</script>
+</html>

@@ -13,13 +13,13 @@
     
     <div id="app">
 
-        <h1>Keyboard Event Example</h1>
-        <input type="text" v-on:keyup="popup">
+        <h1>JS code in template samples</h1>
 
 
-        <h1>Keyboard Event with key modifiers Example</h1>
-        <input type="text" v-on:keyup.enter.space="popup">
-
+        <button v-on:click="count++">CLICK HERE</button>
+        <p>{{ count }}</p>
+        <p>{{ count <= 10 ? 'Smaller then 10' : 'greater then 10'}}</p>
+        
     </div>
 
 </body>
@@ -27,11 +27,9 @@
     new Vue({
         el: '#app',
         data: {
+            count: 0
         },
         methods: {
-            popup: function() {
-                alert('opening by key event');
-            }
         }
     })
 </script>

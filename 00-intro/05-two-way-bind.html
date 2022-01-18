@@ -13,12 +13,9 @@
     
     <div id="app">
 
-        <h1>Keyboard Event Example</h1>
-        <input type="text" v-on:keyup="popup">
-
-
-        <h1>Keyboard Event with key modifiers Example</h1>
-        <input type="text" v-on:keyup.enter.space="popup">
+        <h1>Two way data binding</h1>
+        <input type="text" v-model="name">
+        {{ name }}
 
     </div>
 
@@ -27,11 +24,9 @@
     new Vue({
         el: '#app',
         data: {
+            name: 'Edy'
         },
         methods: {
-            popup: function() {
-                alert('opening by key event');
-            }
         }
     })
 </script>
